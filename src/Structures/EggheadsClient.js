@@ -41,20 +41,18 @@ module.exports = class EggheadsClient extends Client {
 			}
 
 			const prefix = message.content.match(mentionRegexPrefix) ?
-				message.content.match(mentionRegexPrefix)[0] : this.prefix;
-			
-			if(!message.content.startsWith(prefix)) return;
+			message.content.match(mentionRegexPrefix)[0] : this.prefix;
+		
+		if(!message.content.startsWith(prefix)) return;
 
-			console.log(message.content)
+		const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
 
-			const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
-
-			const command = this.commands.get(cmd.toLowerCase()) || this.commands.get(this.aliases.get(cmd.toLowerCase()));
-			if (command) {
-				command.run(message, args);
-			}
-		});
-	}
+		const command = this.commands.get(cmd.toLowerCase()) || this.commands.get(this.aliases.get(cmd.toLowerCase()));
+		if (command) {
+			command.run(message, args);
+		}
+	});
+}
 
 	validate(options) {
 		if (typeof options !== 'object') throw new TypeError(colors.red('Options should be a type of Object.'));
