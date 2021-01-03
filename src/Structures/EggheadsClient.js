@@ -59,15 +59,12 @@ module.exports = class EggheadsClient extends Client {
 	validate(options) {
 		if (typeof options !== 'object') throw new TypeError(colors.red('Options should be a type of Object.'));
 
-		if (!options.token) throw new Error(colors.red('You must pass the token for the client.'));
-		this.token = options.token;
-
 		if (!options.prefix) throw new Error(colors.red('You must pass a prefix for the client.'));
 		if (typeof options.prefix !== 'string') throw new TypeError(colors.red('Prefix should be a type of String.'));
 		this.prefix = options.prefix;
 	}
 
-	async start(token = this.token) {
+	async start(token = process.env.token) {
 		this.utils.loadCommands();
 		super.login(token);
 	}
