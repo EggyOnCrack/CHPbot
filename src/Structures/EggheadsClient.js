@@ -34,14 +34,14 @@ module.exports = class EggheadsClient extends Client {
 			if (message.content.match(mentionRegex)) {
 				const myprefix = new MessageEmbed()
 				.setAuthor("| California Highway Patrol", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Seal_of_the_California_Highway_Patrol.svg/1200px-Seal_of_the_California_Highway_Patrol.svg.png")
-          .setDescription(`**My Prefix For ${message.guild.name} is: \`${this.prefix}\`**`)
+          .setDescription(`**My Prefix For ${message.guild.name} is: \`c!\`**`)
 		  .setColor("#af9c51")
 		  
 		  message.channel.send(myprefix)
 			}
 
 			const prefix = message.content.match(mentionRegexPrefix) ?
-			message.content.match(mentionRegexPrefix)[0] : this.prefix;
+			message.content.match(mentionRegexPrefix)[0] : "c!";
 		
 		if(!message.content.startsWith(prefix)) return;
 
