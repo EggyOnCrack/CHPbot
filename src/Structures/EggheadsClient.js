@@ -62,9 +62,9 @@ module.exports = class EggheadsClient extends Client {
 		this.prefix = options.prefix;
 	}
 
-	async start(token = process.env.token) {
+	async start() {
 		this.utils.loadCommands();
-		super.login(token);
+		super.login(process.env.token);
 	}
 
 };
