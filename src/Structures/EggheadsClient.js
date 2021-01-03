@@ -45,8 +45,8 @@ module.exports = class EggheadsClient extends Client {
 			
 			if(!message.content.startsWith(prefix)) return;
 
+			console.log(message.content)
 
-			// eslint-disable-next-line no-unused-vars
 			const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
 
 			const command = this.commands.get(cmd.toLowerCase()) || this.commands.get(this.aliases.get(cmd.toLowerCase()));
