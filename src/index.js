@@ -56,4 +56,4 @@ client.on('guildMemberRemove', async member => {
     member.guild.channels.cache.find(c => c.id === "789965671794212875").send(attachment)
 })
 
-client.start();
+client.login(process.env.token);
